@@ -117,6 +117,11 @@
       "value": "US",
       "required": false
     },
+    "MONGODB_URI": {
+      "description": " The connection string for your Mongo database. Something like mongodb://sally:sallypass@ds099999.mongolab.com:99999/nightscout",
+      "value": "",
+      "required": true
+    },
     "MONGO_COLLECTION": {
       "description": "The Mongo collection where CGM data is stored.",
       "value": "entries",
