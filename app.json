@@ -4,12 +4,12 @@
   "env": {
     "ALARM_HIGH": {
       "description": "Default setting for new browser views, for the High alarm (triggered when BG crosses BG_TARGET_TOP). ('on' or 'off')",
-      "value": "on",
+      "value": "off",
       "required": false
     },
     "ALARM_LOW": {
       "description": "Default setting for new browser views, for the Low alarm (triggered when BG crosses BG_TARGET_BOTTOM). ('on' or 'off')",
-      "value": "on",
+      "value": "off",
       "required": false
     },
     "ALARM_TIMEAGO_URGENT": {
@@ -39,18 +39,23 @@
     },
     "ALARM_URGENT_HIGH": {
       "description": "Default setting for new browser views, for the Urgent High alarm (triggered when BG crosses BG_HIGH). ('on' or 'off')",
-      "value": "on",
+      "value": "off",
       "required": false 
     },
     "ALARM_URGENT_LOW": {
       "description": "Default setting for new browser views, for the Urgent Low alarm (triggered when BG crosses BG_LOW). ('on' or 'off')",
-      "value": "on",
+      "value": "off",
       "required": false
     },
     "API_SECRET": {
       "description": "A passphrase that must be at least 12 characters long. Avoid 'special' characters, which can cause problems in some cases.",
       "value": "",
       "required": true
+    },
+    "AR2_CONE_FACTOR": {
+      "description": "AR2 Forecasting adjustment of the cone size, use 0 for a single line..",
+      "value": "2",
+      "required": false
     },
     "BG_HIGH": {
       "description": "Urgent High BG threshold, triggers the ALARM_URGENT_HIGH alarm. Set in mg/dL or mmol/L, as set in DISPLAY_UNITS variable.",
@@ -72,49 +77,24 @@
       "value": "180",
       "required": false
     },
-    "BRIDGE_PASSWORD": {
-      "description": "Your Dexcom account password, to receive CGM data from the Dexcom Share service. Also make sure to include 'bridge' in your ENABLE line.",
-      "value": "",
-      "required": false
-    },
-    "BRIDGE_SERVER": {
-      "description": "If you are bridging from the Dexcom Share service, and are anywhere *outside* the US, change this to EU. ('US' or 'EU')",
-      "value": "US",
-      "required": false
-    },
-    "BRIDGE_USER_NAME": {
-      "description": "Your Dexcom account username, to receive CGM data from the Dexcom Share service. Also make sure to include 'bridge' in your ENABLE line.",
-      "value": "",
-      "required": false
-    },
     "CUSTOM_TITLE": {
       "description": "The display name for the Nightscout site. Appears in the upper left of the main view. Often set to the name of the CGM wearer.",
-      "value": "",
+      "value": "My NightScout BG Site",
       "required": false
     },
     "DISPLAY_UNITS": {
       "description": "Preferred BG units for the site: 'mg/dl' or 'mmol/L' (or just 'mmol').",
-      "value": "mg/dl",
+      "value": "mmol",
       "required": true
+    },
+    "DEVICESTATUS_ADVANCED": {
+      "description": "Required as OpenAps documentation.",
+      "value": "true",
+      "required": false
     },
     "ENABLE": {
       "description": "Plugins to enable for your site. Must be a space-delimited, lower-case list. Include the word 'bridge' here if you are receiving data from the Dexcom Share service. Include 'mmconnect' if you are bridging from the MiniMed CareLink service.",
-      "value": "careportal basal",
-      "required": false
-    },
-    "MMCONNECT_USER_NAME": {
-      "description": "Your CareLink account username, to receive CGM data from the CareLink service. Also make sure to include 'mmconnect' in your ENABLE line.",
-      "value": "",
-      "required": false
-    },
-    "MMCONNECT_PASSWORD": {
-      "description": "Your CareLink account password, to receive CGM data from the CareLink service. Also make sure to include 'mmconnect' in your ENABLE line.",
-      "value": "",
-      "required": false
-    },
-    "MMCONNECT_SERVER": {
-      "description": "If you are bridging from the CareLink service, and are anywhere *outside* the US, change this to EU. ('US' or 'EU')",
-      "value": "US",
+      "value": "careportal bwp iob maker basal openaps pump pushover delta boluscalc",
       "required": false
     },
     "MONGODB_URI": {
@@ -132,9 +112,49 @@
       "value": "off",
       "required": false 
     },
+    "OPENAPS_ENABLE_ALERTS": {
+      "description": "",
+      "value": "true",
+      "required": false 
+    },
+   "OPENAPS_FIELDS": {
+      "description": "",
+      "value": "status-symbol status-label iob meal-assist rssi",
+      "required": false 
+    },
+   "OPENAPS_RETRO_FIELDS": {
+      "description": "",
+      "value": "status-symbol status-label iob meal-assist rssi",
+      "required": false 
+    },
+    "PUMP_ENABLE_ALERTS": {
+      "description": "",
+      "value": "true",
+      "required": false 
+    },
+   "PUMP_FIELDS": {
+      "description": "",
+      "value": "battery reservoir clock status",
+      "required": false 
+    },
+   "PUMP_RETRO_FIELDS": {
+      "description": "",
+      "value": "battery reservoir clock status",
+      "required": false 
+    },
+  "SCALE_Y": {
+      "description": "",
+      "value": "linear",
+      "required": false 
+    },
+   "SHOW_FORECAST": {
+      "description": "",
+      "value": "openaps",
+      "required": false 
+    },
     "SHOW_PLUGINS": {
       "description": "Default setting for whether or not these plugins are checked (active) by default, not merely enabled. Include plugins here as in the ENABLE line; space-separated and lower-case.",
-      "value": "careportal",
+      "value": "openaps pump iob sage cage careportal",
       "required": false
     },
     "SHOW_RAWBG": {
@@ -149,7 +169,7 @@
     },
     "TIME_FORMAT": {
       "description": "Default setting for new browser views, for the time mode. ('12' or '24')",
-      "value": "12",
+      "value": "24",
       "required": false 
     }
   },
